@@ -20,6 +20,14 @@ const routes = [
             layout: defaultLayout
         }
     },
+    {
+        path: '/abc_analysis',
+        name: 'ABC analysis',
+        component: () => import('../views/ABCAnalysis.vue'),
+        meta: {
+            layout: defaultLayout
+        }
+    },
 ]
 
 

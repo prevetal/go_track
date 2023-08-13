@@ -8,7 +8,7 @@
             {{ $t('message.menu_link2') }}
         </router-link></div>
 
-        <div><router-link to="/" class="link">
+        <div><router-link to="/abc_analysis" class="link" :class="{ active: route.path == '/abc_analysis' }">
             {{ $t('message.menu_link3') }}
         </router-link></div>
     </nav>

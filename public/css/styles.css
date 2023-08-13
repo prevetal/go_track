@@ -349,8 +349,7 @@ button
 }
 
 
-
-.modal.success .modal_content .data
+.modal_data
 {
     padding: 30px 40px 40px;
 }

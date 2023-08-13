@@ -63,9 +63,14 @@ export default {
             'btn_create_delivery': '+ Создать новую поставку',
 
 
+            // ABC analysis
+            'abc_analysis_title': 'ABC анализ',
+
+
             // Products
             'products_titles_col_products': 'Товары',
-            'products_titles_col_count': 'Товары: {count}',
+            'products_titles_col_product': 'Товар',
+            'products_titles_col_products_count': 'Товары: {count}',
             'products_titles_col_sku_apt': 'SKU/АРТ',
             'products_titles_col_abc': 'ABC',
             'products_titles_col_remainder': 'Остаток',
@@ -74,8 +79,37 @@ export default {
             'products_titles_col_lost_profit': 'Потерянная прибыль',
             'products_titles_col_status': 'Статус поставки',
             'products_titles_col_count': 'Товара к поставке',
+            'products_titles_col_sales': 'Продажи',
+            'products_titles_col_revenue': 'Выручка',
+            'products_titles_col_profit': 'Прибыль',
+            'products_titles_col_margin': 'Маржа',
+            'products_titles_col_ransom': '% выкупа',
+            'products_titles_col_return': '% возврата',
+            'products_titles_col_for_delivery': 'К поставке',
 
-            'btn_all_delivery_products': 'Показать остальные 115 товаров в поставке',
+
+            // Modal - Adding to delivery
+            'adding_to_delivery_modal_title': 'Добавление товара в поставку',
+            'adding_to_delivery_choose_delivery_placeholder': 'Выберите поставку',
+            'adding_to_delivery_recommendation': 'рекомендация: {count}',
+
+
+            // Modal - Removing from delivery
+            'removing_from_delivery_modal_title': 'Удаление товара из поставки',
+            'removing_from_delivery_text': 'Вы уверены, что хотите удалить товар из поставки?',
+
+
+            // Modal - Adding all to delivery
+            'adding_all_to_delivery_modal_title': 'Добавление {count} товаров в поставку',
+            'adding_all_to_delivery_text': 'В поставку добавятся только те товары, которые не находятся в других поставках. Товары добавятся в рекомендованном объёме. Для изменения количества перейдите в поставку.',
+
+
+            // Buttons
+            'btn_all_delivery_products': 'Показать остальные {count} товаров в поставке',
+            'btn_cancel': 'Отмена',
+            'btn_add_product_to_delivery': 'Добавить товар в поставку',
+            'btn_add_to_delivery': 'Добавить в поставку',
+            'btn_remove_from_delivery': 'Удалить из поставки',
         }
     }
 }

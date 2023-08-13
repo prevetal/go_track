@@ -21,7 +21,7 @@
                     <!-- Search -->
                     <Search />
 
-                    <button class="all_products_in_delivery">
+                    <button class="all_products_in_delivery" @click.prevent="emitter.emit('openAddingAllToDeliveryModal')">
                         {{ $t('message.btn_all_products_in_delivery') }}
                     </button>
                 </div>
@@ -40,7 +40,7 @@
                 <!-- Search -->
                 <Search />
 
-                <button class="create_delivery_btn">
+                <button class="create_delivery_btn" @click.prevent="emitter.emit('openCreatingDeliveryModal')">
                     {{ $t('message.btn_create_delivery') }}
                 </button>
             </div>
@@ -95,7 +95,7 @@
 
 
 <script setup>
-    import { ref } from 'vue'
+    import { inject, ref } from 'vue'
 
     // Components
     import LeftoversFilter from '@/components/offer_planning/LeftoversFilter.vue'
@@ -105,7 +105,8 @@
     import SuppliesProducts from '@/components/offer_planning/SuppliesProducts.vue'
 
 
-    const activeTab = ref(2)
+    const emitter = inject('emitter'),
+        activeTab = ref(1)
 </script>
 
 
