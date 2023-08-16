@@ -1,14 +1,14 @@
 <template>
     <section class="modal">
-        <div class="modal_content" @click.self="emitter.emit('closeRemovingFromDeliveryModal')">
+        <div class="modal_content" @click.self="emitter.emit('closeRemovingDeliveryModal')">
             <div class="data">
-                <button class="close_btn" @click.prevent="emitter.emit('closeRemovingFromDeliveryModal')">
+                <button class="close_btn" @click.prevent="emitter.emit('closeRemovingDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_close"></use></svg>
                 </button>
 
 
                 <div class="modal_title">
-                    {{ $t('message.removing_from_delivery_modal_title') }}
+                    {{ $t('message.removing_delivery_modal_title') }}
                 </div>
 
 
@@ -18,19 +18,19 @@
                     </div>
 
                     <div class="btns">
-                        <button class="cancel_btn btn" @click.prevent="emitter.emit('closeRemovingFromDeliveryModal')">
+                        <button class="cancel_btn btn" @click.prevent="emitter.emit('closeRemovingDeliveryModal')">
                             {{ $t('message.btn_cancel') }}
                         </button>
 
                         <button class="remove_btn btn">
-                            {{ $t('message.btn_remove_from_delivery') }}
+                            {{ $t('message.btn_remove_delivery') }}
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="overlay" @click.prevent="emitter.emit('closeRemovingFromDeliveryModal')"></div>
+        <div class="overlay" @click.prevent="emitter.emit('closeRemovingDeliveryModal')"></div>
     </section>
 </template>
 
@@ -79,7 +79,7 @@
 
     .btns .btn:hover
     {
-        background: #f6f7f8;
+        background: #F6F7F8;
     }
 
     .btns .btn.remove_btn

@@ -50,6 +50,13 @@
 
         border: 1px solid #dbe0e4;
         border-radius: 100px;
+        transition: border-color .2s linear;
+    }
+
+
+    .search .input:focus
+    {
+        border-color: #49aa4f;
     }
 
 </style>

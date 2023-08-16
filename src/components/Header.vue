@@ -5,20 +5,29 @@
             <Logo />
 
             <!-- Menu -->
-            <Menu />
+            <Menu v-if="store.user.isAuth" />
+
+            <!-- Auth menu -->
+            <AuthMenu v-if="!store.user.isAuth" />
 
             <!-- User -->
-            <User />
+            <User v-if="store.user.isAuth" />
         </div>
     </header>
 </template>
 
 
 <script setup>
+    import { useGlobalStore } from '@/stores'
+
     // Components
     import Logo from '@/components/header/Logo.vue'
     import Menu from '@/components/header/Menu.vue'
+    import AuthMenu from '@/components/header/AuthMenu.vue'
     import User from '@/components/header/User.vue'
+
+
+    const store = useGlobalStore()
 </script>
 
 

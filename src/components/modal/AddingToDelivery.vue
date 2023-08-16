@@ -1,5 +1,5 @@
 <template>
-    <section class="modal" id="adding_to_delivery_modal">
+    <section class="modal">
         <div class="modal_content" @click.self="emitter.emit('closeAddingToDeliveryModal')">
             <div class="data">
                 <button class="close_btn" @click.prevent="emitter.emit('closeAddingToDeliveryModal')">
@@ -341,7 +341,7 @@
         margin-top: 10px;
         padding: 13px 19px;
 
-        transition: .2s linear;
+        transition: background .2s linear;
 
         border: 1px dashed #dbe0e4;
         border-radius: 4px;
@@ -349,10 +349,7 @@
 
     .create_delivery_btn:hover
     {
-        color: #fff;
-
-        border-color: #49aa4f;
-        background: #49aa4f;
+        background: #f6f7f8;
     }
 
 
@@ -497,10 +494,13 @@
 
     .btns .btn:hover
     {
-        color: #fff;
+        background: #f6f7f8;
+    }
 
-        border-color: #49aa4f;
-        background: #49aa4f;
+    .btns .btn.add_btn:hover
+    {
+        border-color: #3b9340;
+        background: #3b9340;
     }
 
 </style>

@@ -404,6 +404,7 @@
         letter-spacing: 1px;
         text-transform: uppercase;
 
+        border-top: 1px solid #dbe0e4;
         border-bottom: 1px solid #dbe0e4;
         background: #f6f7f8;
 
@@ -682,7 +683,7 @@
         margin-top: 10px;
         padding: 6px 14px 7px;
 
-        transition: .2s linear;
+        transition: background .2s linear;
 
         border: 1px solid #dbe0e4;
         border-radius: 4px;
@@ -690,10 +691,7 @@
 
     .product .add_in_delivery_btn:hover
     {
-        color: #fff;
-
-        border-color: #49aa4f;
-        background: #49aa4f;
+        background: #f6f7f8;
     }
 
 
@@ -742,6 +740,8 @@
         margin-top: 10px;
         margin-left: auto;
 
+        transition: color .2s linear;
+
         align-self: center;
         justify-content: center;
         align-items: center;
@@ -755,6 +755,11 @@
 
         width: 21px;
         height: 21px;
+    }
+
+    .product .remove_btn:hover
+    {
+        color: #49aa4f;
     }
 
 

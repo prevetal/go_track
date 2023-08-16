@@ -1,5 +1,5 @@
 <template>
-    <section class="modal" id="adding_to_delivery_modal">
+    <section class="modal">
         <div class="modal_content" @click.self="emitter.emit('closeCreatingDeliveryModal')">
             <div class="data">
                 <button class="close_btn" @click.prevent="emitter.emit('closeCreatingDeliveryModal')">
@@ -201,10 +201,13 @@
 
     .btns .btn:hover
     {
-        color: #fff;
+        background: #f6f7f8;
+    }
 
-        border-color: #49aa4f;
-        background: #49aa4f;
+    .btns .btn.add_btn:hover
+    {
+        border-color: #3b9340;
+        background: #3b9340;
     }
 
 </style>

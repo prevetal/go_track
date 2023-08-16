@@ -102,12 +102,21 @@
     }
 
 
-    .period .btn:hover,
+    .period .btn:hover
+    {
+        z-index: 3;
+
+        border-color: #49aa4f;
+    }
+
     .period .btn.active
     {
         color: #fff;
 
+        z-index: 5;
+
         border-color: #49aa4f;
         background: #49aa4f;
     }
+
 </style>

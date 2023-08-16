@@ -95,7 +95,7 @@
             </div>
 
             <div class="col_remove">
-                <button class="remove_btn">
+                <button class="remove_btn" @click.prevent="emitter.emit('openRemovingFromDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                 </button>
             </div>
@@ -160,7 +160,7 @@
             </div>
 
             <div class="col_remove">
-                <button class="remove_btn">
+                <button class="remove_btn" @click.prevent="emitter.emit('openRemovingFromDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                 </button>
             </div>
@@ -225,7 +225,7 @@
             </div>
 
             <div class="col_remove">
-                <button class="remove_btn">
+                <button class="remove_btn" @click.prevent="emitter.emit('openRemovingFromDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                 </button>
             </div>
@@ -290,7 +290,7 @@
             </div>
 
             <div class="col_remove">
-                <button class="remove_btn">
+                <button class="remove_btn" @click.prevent="emitter.emit('openRemovingFromDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                 </button>
             </div>
@@ -355,7 +355,7 @@
             </div>
 
             <div class="col_remove">
-                <button class="remove_btn">
+                <button class="remove_btn" @click.prevent="emitter.emit('openRemovingFromDeliveryModal')">
                     <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                 </button>
             </div>
@@ -370,7 +370,10 @@
 
 
 <script setup>
+    import { inject } from 'vue'
 
+
+    const emitter = inject('emitter')
 </script>
 
 
@@ -391,6 +394,7 @@
         letter-spacing: 1px;
         text-transform: uppercase;
 
+        border-top: 1px solid #dbe0e4;
         border-bottom: 1px solid #dbe0e4;
         background: #f6f7f8;
 
@@ -645,6 +649,8 @@
         height: 33px;
         margin: auto;
 
+        transition: color .2s linear;
+
         align-self: center;
         justify-content: center;
         align-items: center;
@@ -658,6 +664,11 @@
 
         width: 21px;
         height: 21px;
+    }
+
+    .product .remove_btn:hover
+    {
+        color: #49aa4f;
     }
 
 
@@ -796,7 +807,7 @@
         margin-top: -1px;
         padding: 13px 19px 14px;
 
-        transition: .2s linear;
+        transition: background .2s linear;
 
         border: 1px solid #dbe0e4;
         border-radius: 4px;
@@ -804,10 +815,7 @@
 
     .products .all_btn:hover
     {
-        color: #fff;
-
-        border-color: #49aa4f;
-        background: #49aa4f;
+        background: #F6F7F8;
     }
 
 </style>

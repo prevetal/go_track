@@ -50,7 +50,7 @@
                     <div class="head">
                         <svg class="arr"><use xlink:href="@/assets/sprite.svg#ic_arr_hor"></use></svg>
 
-                        <div class="name">Катя, рубашки срочно в каледино...</div>
+                        <div class="name" @click.prevent="toggleActiveClass">Катя, рубашки срочно в каледино...</div>
 
                         <div class="crated_date">Создана: <span>23.05.2023</span></div>
 
@@ -72,11 +72,54 @@
                         </div>
 
                         <div class="btns">
-                            <button class="btn edit_btn">
+                            <button class="btn edit_btn" @click.prevent="emitter.emit('openEditingDeliveryModal')">
                                 <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_edit"></use></svg>
                             </button>
 
-                            <button class="btn remove_btn">
+                            <button class="btn remove_btn" @click.prevent="emitter.emit('openRemovingDeliveryModal')">
+                                <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="data">
+                        <!-- Products -->
+                        <SuppliesProductsEmpty />
+                    </div>
+                </div>
+
+
+                <div class="order">
+                    <div class="head">
+                        <svg class="arr"><use xlink:href="@/assets/sprite.svg#ic_arr_hor"></use></svg>
+
+                        <div class="name" @click.prevent="toggleActiveClass">Катя, рубашки срочно в каледино...</div>
+
+                        <div class="crated_date">Создана: <span>23.05.2023</span></div>
+
+                        <div class="delivery_date">Дата поставки: <span>29.05.2023</span></div>
+
+                        <div class="items_count">Позиций: <span>120</span></div>
+
+                        <div class="products_count">Товара: <span>2 120</span></div>
+
+                        <div class="status">
+                            <div class="current">
+                                <span>Черновик</span>
+                                <svg class="arr"><use xlink:href="@/assets/sprite.svg#ic_arr_ver"></use></svg>
+                            </div>
+
+                            <div class="dropdown">
+
+                            </div>
+                        </div>
+
+                        <div class="btns">
+                            <button class="btn edit_btn" @click.prevent="emitter.emit('openEditingDeliveryModal')">
+                                <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_edit"></use></svg>
+                            </button>
+
+                            <button class="btn remove_btn" @click.prevent="emitter.emit('openRemovingDeliveryModal')">
                                 <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_remove"></use></svg>
                             </button>
                         </div>
@@ -103,10 +146,17 @@
     import Search from '@/components/Search.vue'
     import LeftoversProducts from '@/components/offer_planning/LeftoversProducts.vue'
     import SuppliesProducts from '@/components/offer_planning/SuppliesProducts.vue'
+    import SuppliesProductsEmpty from '@/components/offer_planning/SuppliesProductsEmpty.vue'
 
 
     const emitter = inject('emitter'),
         activeTab = ref(1)
+
+
+    // Toggle active class
+    function toggleActiveClass(e) {
+        e.target.closest('.head').classList.toggle('active')
+    }
 </script>
 
 
@@ -181,6 +231,8 @@
 
         margin-bottom: 30px;
 
+        cursor: pointer;
+
         justify-content: space-between;
         align-items: flex-start;
         align-content: flex-start;
@@ -226,7 +278,7 @@
         margin-top: 20px;
         padding: 13px 19px;
 
-        transition: .2s linear;
+        transition: background .2s linear;
 
         border: 1px dashed #dbe0e4;
         border-radius: 4px;
@@ -234,10 +286,7 @@
 
     .offer_planning .create_delivery_btn:hover
     {
-        color: #fff;
-
-        border-color: #49aa4f;
-        background: #49aa4f;
+        background: #f6f7f8;
     }
 
 
@@ -381,6 +430,8 @@
         width: 20px;
         height: 20px;
 
+        transition: color .2s linear;
+
         justify-content: center;
         align-items: center;
         align-content: center;
@@ -406,11 +457,28 @@
         height: 18px;
     }
 
+    .order .head .btns .btn:hover
+    {
+        color: #49aa4f;
+    }
 
-    .order .head.actice .name
+
+    .order .head.active .name
     {
         color: #49aa4f;
         font-weight: 600;
+    }
+
+
+    .order .data
+    {
+        display: none;
+    }
+
+
+    .order .head.active + .data
+    {
+        display: block;
     }
 
 </style>

@@ -87,8 +87,10 @@
         height: 18px;
         margin: auto;
 
+        transition: .2s linear;
+
+        border: 1px solid #dbe0e4;
         border-radius: 4px;
-        background: #e69f47;
 
         justify-content: center;
         align-items: center;
@@ -106,6 +108,19 @@
         transition: opacity .2s linear;
 
         opacity: 0;
+    }
+
+
+    .chart .previous_period:hover .check
+    {
+        border-color: #e69f47;
+    }
+
+
+    .chart .previous_period.active .check
+    {
+        border-color: #e69f47;
+        background: #e69f47;
     }
 
     .chart .previous_period.active .check svg
