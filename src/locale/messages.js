@@ -171,11 +171,35 @@ export default {
             'form_placeholder_password': 'Пароль',
             'form_placeholder_shop_name': 'Название магазина',
             'form_placeholder_api_key': 'Ключ API',
+            'form_placeholder_choose_delivery': 'Для расчёта выберите поставку',
 
             'form_label_or': 'или',
+            'form_label_create_delivery': 'Создание новой поставки',
+            'form_label_choose_date': 'Выбрать дату поставки',
+            'form_label_how_long': 'На сколько дней заполнить склад',
 
             'form_social_auth_ya': 'Войти через Яндекс ID',
             'form_agree': 'Нажимая кнопку «{btn}», Вы принимаете условия <a href="/" target="_blank">Пользовательского соглашения</a> и <a href="/" target="_blank">Политики конфиденциальности</a>',
+
+
+            // Product features
+            'product_size_label': 'Размер:',
+            'product_brand_label': 'Бренд:',
+            'product_sku_label': 'SKU:',
+            'product_art_label': 'Арт:',
+
+
+            // Delivery features
+            'delivery_created': 'Создана:',
+            'delivery_date': 'Дата поставки:',
+            'delivery_positions': 'Позиций:',
+            'delivery_products': 'Товара:',
+
+
+            // Delivery status
+            'delivery_status_draft': 'Черновик',
+            'delivery_status_in_work': 'В работе',
+            'delivery_status_completed': 'Выполнена',
 
 
             // Buttons

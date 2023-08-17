@@ -12,6 +12,8 @@
                 <span>{{ $t('message.orders_chart_previous_period_label') }}</span>
             </button>
         </div>
+
+
     </div>
 </template>
 

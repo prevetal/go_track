@@ -36,18 +36,23 @@
                             <div>
                                 <div class="name">Рубашка мужская хлопок...</div>
 
-                                <div class="feature">Размер: М</div>
-                                <div class="feature">Бренд: Zara</div>
+                                <div class="feature">
+                                    {{ $t('message.product_size_label') }} М
+                                </div>
+
+                                <div class="feature">
+                                    {{ $t('message.product_brand_label') }} Zara
+                                </div>
                             </div>
                         </div>
 
                         <div class="col_sku_apt">
-                            <div>SKU: <span>AKSFUO1093</span></div>
-                            <div>Арт: <u>104912093</u></div>
+                            <div>{{ $t('message.product_size_label') }} <span>AKSFUO1093</span></div>
+                            <div>{{ $t('message.product_size_label') }} <u>104912093</u></div>
                         </div>
 
                         <div class="col_for_delivery">
-                            <div>Для расчёта выберите поставку</div>
+                            <div>{{ $t('message.form_placeholder_choose_delivery') }}</div>
 
                             <!-- <input type="number" name="" value="0" class="input"> -->
 
@@ -58,16 +63,54 @@
                     </div>
 
 
-                    <div class="choose_delivery">
-                        <div class="current">
-                            <span>{{ $t('message.adding_to_delivery_choose_delivery_placeholder') }}</span>
+                    <div class="choose_delivery" ref="target">
+                        <div class="current" @click.prevent="showDropdown = !showDropdown">
+                            <span v-if="!selectedDelivery.length">{{ $t('message.adding_to_delivery_choose_delivery_placeholder') }}</span>
+                            <span v-else>{{ selectedDelivery }}</span>
+
                             <svg class="arr"><use xlink:href="@/assets/sprite.svg#ic_arr_ver"></use></svg>
+                        </div>
+
+                        <div class="dropdown" v-show="showDropdown">
+                            <div class="list">
+                                <div class="item" @click.prevent="toggleDelivery('Моя новая супер-поставочка')" :class="{ selected: selectedDelivery == 'Моя новая супер-поставочка' }">
+                                    <span>Моя новая супер-поставочка</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+
+                                <div class="item" @click.prevent="toggleDelivery('Катя, срочно рубашки в коледино')" :class="{ selected: selectedDelivery == 'Катя, срочно рубашки в коледино' }">
+                                    <span>Катя, срочно рубашки в коледино</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+
+                                <div class="item" @click.prevent="toggleDelivery('Поставка от 8 мая 2023')" :class="{ selected: selectedDelivery == 'Поставка от 8 мая 2023' }">
+                                    <span>Поставка от 8 мая 2023</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+
+                                <div class="item" @click.prevent="toggleDelivery('Поставка от 3 мая 2023')" :class="{ selected: selectedDelivery == 'Поставка от 3 мая 2023' }">
+                                    <span>Поставка от 3 мая 2023</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+
+                                <div class="item" @click.prevent="toggleDelivery('Поставка от 26 апр 2023')" :class="{ selected: selectedDelivery == 'Поставка от 26 апр 2023' }">
+                                    <span>Поставка от 26 апр 2023</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+
+                                <div class="item" @click.prevent="toggleDelivery('Поставка от 21 апр 2023')" :class="{ selected: selectedDelivery == 'Поставка от 21 апр 2023' }">
+                                    <span>Поставка от 21 апр 2023</span>
+                                    <svg class="icon"><use xlink:href="@/assets/sprite.svg#ic_filter_check"></use></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
 
                     <div class="new_delivery" v-if="showNewDelivery">
-                        <div class="label">Создание новой поставки</div>
+                        <div class="label">
+                            {{ $t('message.form_label_create_delivery') }}
+                        </div>
 
                         <div class="field">
                             <input type="text" name="" value="" class="input">
@@ -75,12 +118,18 @@
 
                         <div class="row">
                             <div class="date">
-                                <div class="label">Выбрать дату поставки</div>
+                                <div class="label">
+                                    {{ $t('message.form_label_choose_date') }}
+                                </div>
+
                                 <input type="text" name="" value="29.05.2023" class="input">
                             </div>
 
                             <div class="days">
-                                <div class="label">На сколько дней заполнить склад</div>
+                                <div class="label">
+                                    {{ $t('message.form_label_how_long') }}
+                                </div>
+
                                 <input type="number" name="" value="30" class="input">
                             </div>
                         </div>
@@ -97,7 +146,7 @@
                             {{ $t('message.btn_cancel') }}
                         </button>
 
-                        <button class="add_btn btn disabled">
+                        <button class="add_btn btn" :class="{ disabled: !selectedDelivery.length }">
                             {{ $t('message.btn_add_product_to_delivery') }}
                         </button>
                     </div>
@@ -113,8 +162,22 @@
 <script setup>
     import { inject, ref } from 'vue'
 
+
     const emitter = inject('emitter'),
-        showNewDelivery = ref(false)
+        showNewDelivery = ref(false),
+        target = ref(null),
+        showDropdown = ref(false),
+        selectedDelivery = ref('')
+
+
+    // Toggle delivery
+    function toggleDelivery(name) {
+        // Set new value
+        selectedDelivery.value = name
+
+        // Hide dropdown
+        showDropdown.value = false
+    }
 </script>
 
 
@@ -292,6 +355,8 @@
 
     .choose_delivery
     {
+        position: relative;
+
         margin-top: 30px;
     }
 
@@ -305,6 +370,7 @@
         padding: 13px 14px 14px 14px;
 
         cursor: pointer;
+        transition: border-color .2s linear;
 
         border: 1px solid #dbe0e4;
         border-radius: 4px;
@@ -326,6 +392,98 @@
         margin: auto;
 
         pointer-events: none;
+    }
+
+
+    .choose_delivery .current:hover,
+    .choose_delivery .current.open
+    {
+        border-color: #49aa4f;
+    }
+
+
+    .choose_delivery .dropdown
+    {
+        position: absolute;
+        z-index: 10;
+        top: 100%;
+        left: 0;
+
+        width: 360px;
+        max-width: 100%;
+        margin-top: 5px;
+        padding: 5px 0;
+
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 4px 10px 0 rgba(20, 20, 20, .10);
+    }
+
+
+    .choose_delivery .list
+    {
+        overflow: auto;
+
+        max-height: 224px;
+
+        scrollbar-color: #49aa4f #dbe0e4;
+        scrollbar-width: thin;
+    }
+
+    .choose_delivery .list::-webkit-scrollbar
+    {
+        width: 4px;
+        height: 4px;
+
+        border-radius: 5px;
+        background-color: #dbe0e4;
+    }
+
+    .choose_delivery .list::-webkit-scrollbar-thumb
+    {
+        border-radius: 5px;
+        background-color: var(--text_color);
+    }
+
+
+    .choose_delivery .list .item
+    {
+        position: relative;
+
+        padding: 10px 40px 10px 15px;
+
+        cursor: pointer;
+        transition: background .2s linear;
+    }
+
+    .choose_delivery .list .item .icon
+    {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        bottom: 0;
+
+        display: block;
+
+        width: 15px;
+        height: 12px;
+        margin: auto;
+
+        transition: opacity .2s linear;
+
+        opacity: 0;
+    }
+
+
+    .choose_delivery .list .item:hover,
+    .choose_delivery .list .item.selected
+    {
+        background: #f1f8f1;
+    }
+
+    .choose_delivery .list .item.selected .icon
+    {
+        opacity: 1;
     }
 
 
@@ -502,5 +660,4 @@
         border-color: #3b9340;
         background: #3b9340;
     }
-
 </style>

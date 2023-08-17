@@ -60,12 +60,6 @@
 
 
 <style scoped>
-    .new_delivery
-    {
-        margin-top: 20px;
-    }
-
-
     .new_delivery .label
     {
         color: #808080;
